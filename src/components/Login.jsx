@@ -1,8 +1,12 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Header from "./Header";
 import { validation } from "../utils/formValidation";
 import { createUser } from "../utils/createUser";
 import { enterUser } from "../utils/enterUser";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignInForm, setIsSignInFomr] = useState(true);
@@ -10,18 +14,32 @@ const Login = () => {
   const password = useRef(null);
   const userName = useRef(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleFormToggle = () => {
     setIsSignInFomr(!isSignInForm);
   };
-
   const handleValidation = () => {
     const msg = validation(email.current.value, password.current.value);
     if (msg) setErrorMessage(msg);
     else {
       isSignInForm
-        ? enterUser(email.current.value, password.current.value)
-        : createUser(userName.current.value, email.current.value, password.current.value)
+        ? enterUser(
+            email.current.value,
+            password.current.value,
+            setErrorMessage,
+            dispatch,
+            navigate
+          )
+        : createUser(
+            userName.current.value,
+            email.current.value,
+            password.current.value,
+            dispatch,
+            navigate,
+            setErrorMessage
+          );
     }
   };
 
