@@ -3,10 +3,7 @@ import Header from "./Header";
 import { validation } from "../utils/formValidation";
 import { createUser } from "../utils/createUser";
 import { enterUser } from "../utils/enterUser";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { addUser, removeUser } from "../utils/userSlice";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignInForm, setIsSignInFomr] = useState(true);
@@ -15,7 +12,7 @@ const Login = () => {
   const userName = useRef(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
 
   const handleFormToggle = () => {
     setIsSignInFomr(!isSignInForm);
@@ -30,14 +27,12 @@ const Login = () => {
             password.current.value,
             setErrorMessage,
             dispatch,
-            navigate
           )
         : createUser(
             userName.current.value,
             email.current.value,
             password.current.value,
             dispatch,
-            navigate,
             setErrorMessage
           );
     }

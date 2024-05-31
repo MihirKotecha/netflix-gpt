@@ -1,19 +1,19 @@
-import { getAuth } from "firebase/auth";
+import { browserLocalPersistence, getAuth, setPersistence } from "firebase/auth";
 import Header from "./Header";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
-  const navigate = useNavigate();
-  useEffect(() => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (!user) navigate("/");
-  }, []);
+
+  useNowPlayingMovies();
 
   return (
     <div>
-      <Header />
+     
+      <MainContainer />
+      <SecondaryContainer/>
     </div>
   );
 };

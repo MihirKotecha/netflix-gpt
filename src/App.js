@@ -11,12 +11,16 @@ function App() {
   const appRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Login />,
+      element: <Browse />,
     },
     {
       path: "/browse",
       element: <Browse />,
     },
+    {
+      path: "/login",
+      element: <Login />
+    }
   ]);
 
   return <Provider store={appStore}><RouterProvider router={appRouter} /></Provider>;

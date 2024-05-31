@@ -1,13 +1,11 @@
 import signOutUser from "../utils/signOutUser";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 const DropDown = () => {
     const dipatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleClick = () => {
-        signOutUser(dipatch,navigate);
+        signOutUser(dipatch);
     }
     return(
         <div className=" bg-black w-28 p-2">

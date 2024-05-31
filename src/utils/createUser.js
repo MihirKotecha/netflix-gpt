@@ -10,7 +10,6 @@ export const createUser = (
   email,
   password,
   dispatch,
-  navigate,
   setErroMessage
 ) => {
   const auth = getAuth();
@@ -23,7 +22,6 @@ export const createUser = (
         dispatch(
           addUser({ email: user.email, name: user.displayName, uid: user.uid })
         );
-        navigate("/browse");
       });
       console.log(user);
     })
