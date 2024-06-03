@@ -6,4 +6,7 @@ const API_OPTIONS = {
   }
 };
 
+export const BACKFROP_URL = "https://image.tmdb.org/t/p/w500";
+
+
 export default API_OPTIONS

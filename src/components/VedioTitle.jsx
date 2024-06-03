@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const VideoTitle = ({ title, overview }) => {
-  const [moreInfo, setMoreInfo] = useState(false);
+  const [moreInfo, setMoreInfo] = useState(true);
   const handleClick = () => {
     setMoreInfo(!moreInfo);
   };
