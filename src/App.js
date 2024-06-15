@@ -3,6 +3,7 @@ import Browse from "./components/Browse";
 import Login from "./components/Login";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import GptSearch from "./components/GptSearch";
 
 
 function App() {
@@ -20,6 +21,10 @@ function App() {
     {
       path: "/login",
       element: <Login />
+    },
+    {
+      path: "/search",
+      element: <GptSearch />
     }
   ]);
 

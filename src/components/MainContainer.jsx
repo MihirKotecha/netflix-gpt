@@ -12,8 +12,8 @@ const MainContainer = () => {
     // console.log(original_title,id);
     return(
         <div className="">
-             <Header />
-            <VideoTitle title={original_title} overview={overview} className="w-screen"/>
+             
+            <VideoTitle title={original_title} overview={overview} className=""/>
             <VideoBackGround id={id}/>
         </div>
     );

@@ -7,8 +7,9 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "../utils/userSlice";
 
-const Header = () => {
+const Header = ({setGptSearchPage}) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  const [isGptBtnText , setIsGptBtnText] = useState(true);
   const handleClick = () => {
     setIsDropDownOpen(!isDropDownOpen);
   };
@@ -17,7 +18,6 @@ const Header = () => {
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-     
       if (user) {
         const { uid, displayName, email } = user;
         dipatch(addUser({ email: email, id: uid, name: displayName }));
@@ -25,14 +25,25 @@ const Header = () => {
       } else {
         navigate("/login");
       }
-    })
+    });
   }, []);
+
+  const handleGptClick = () => {
+    setGptSearchPage();
+    setIsGptBtnText(!isGptBtnText);
+  }
 
 
   return (
     <div className="absolute top-0 w-full z-10 flex justify-between items-center ">
       <img className="w-48 px-7" src={logoURL} alt="logo" />
-      <div className="relative">
+      <div className="relative flex">
+        <button
+          className="mx-8 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 my-2 p-2 text-white font-bold rounded-lg"
+          onClick={handleGptClick}
+        >
+          {isGptBtnText? "GPT Search" : "Home"}
+        </button>
         <img
           className="w-10 h-10 mr-8 my-2 cursor-pointer"
           onClick={handleClick}
@@ -40,7 +51,7 @@ const Header = () => {
           alt="profile"
         />
         {isDropDownOpen && (
-          <div className="absolute right-0 m-2">
+          <div className="absolute right-0 m-2 my-14">
             <DropDown />
           </div>
         )}

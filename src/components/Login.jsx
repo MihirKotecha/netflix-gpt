@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect } from "react";
 import Header from "./Header";
+import { useRef, useState} from "react";
 import { validation } from "../utils/formValidation";
 import { createUser } from "../utils/createUser";
 import { enterUser } from "../utils/enterUser";
@@ -16,6 +16,7 @@ const Login = () => {
 
   const handleFormToggle = () => {
     setIsSignInFomr(!isSignInForm);
+    setErrorMessage(null);
   };
   const handleValidation = () => {
     const msg = validation(email.current.value, password.current.value);

@@ -5,7 +5,7 @@ const Body = () => {
 
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Browse />
       <Login />
     </div>
