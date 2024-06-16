@@ -23,10 +23,8 @@ export const createUser = (
           addUser({ email: user.email, name: user.displayName, uid: user.uid })
         );
       });
-      console.log(user);
     })
     .catch((error) => {
-      console.log(error.message + "-" + error.code);
       setErroMessage(error.message + "-" + error.code);
     });
 };

@@ -10,7 +10,6 @@ const signOutUser = (dispatch) => {
       dispatch(removeNowPlayingMovies());
     })
     .catch((error) => {
-      console.log(error);
     });
 };
 

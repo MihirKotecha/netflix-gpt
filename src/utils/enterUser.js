@@ -11,9 +11,7 @@ export const enterUser = (email, password, setErroMessage,dispatch) => {
       dispatch(
         addUser({ email: user.email, name: user.displayName, uid: user.uid })
       );
-      // setPersistence(auth,browserLocalPersistence).then(()=>{
-      //   console.log("Persistence set");
-      // })
+
     })
 
     .catch((eror) => {
